@@ -7,6 +7,7 @@
 </template>
 
 <template name="AdminDashboardNew">
+	{{#if isSubReady}}
 	{{> adminAlert}}
 	{{#if adminTemplate admin_collection_name 'new'}}
 		{{#with adminTemplate admin_collection_name 'new'}}
@@ -20,6 +21,9 @@
 				{{> quickForm id="admin_insert" collection=admin_collection_name fields=admin_fields omitFields=admin_omit_fields buttonContent='Create'}}
 			</div>
 		</div>
+	{{/if}}
+	{{else}}
+		<div class="box box-default"><div class="box-body">Loading...</div></div>
 	{{/if}}
 </template>
 
