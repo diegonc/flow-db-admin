@@ -51,7 +51,7 @@ Template.AdminDashboardEdit.helpers
   action: -> FlowRouter.getQueryParam 'action'
 
 Template.AdminDashboardUsersEdit.helpers
-  user: -> Meteor.users.find(FlowRouter.getParam '_id').fetch()
+  user: -> Meteor.users.findOne({_id: FlowRouter.getParam '_id'})
   action: -> FlowRouter.getQueryParam 'action'
   roles: -> Roles.getRolesForUser(FlowRouter.getParam '_id')
   otherRoles: -> _.difference _.map(Meteor.roles.find().fetch(), (role) -> role.name), Roles.getRolesForUser(FlowRouter.getParam '_id')
