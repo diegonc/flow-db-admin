@@ -103,7 +103,7 @@
 		<div class="box-body">
 			{{> adminAlert}}
 			{{#if adminGetUserSchema}}
-			{{> quickForm id="adminUpdateUser" buttonContent="Update" buttonClasses="btn btn-primary btn-sm" collection=adminGetUsers schema=adminGetUserSchema doc=admin_current_doc omitFields="roles,services"}}
+			{{> quickForm id="adminUpdateUser" buttonContent="Update" buttonClasses="btn btn-primary btn-sm" collection=adminGetUsers schema=adminGetUserSchema doc=user omitFields="roles,services"}}
 			<hr/>
 			{{/if}}
 
@@ -128,7 +128,7 @@
 				<input value="{{admin_current_id}}" type="text" name="_id" omitfields="createdAtupdatedAt" required="" data-schema-key="_id" class="form-control" autocomplete="off" />
 				<span class="help-block"></span>
 			</div>
-			<p>Send a reset password email to {{admin_current_doc.emails.[0].address}}</p>
+			<p>Send a reset password email to {{user.emails.[0].address}}</p>
 			<button type="submit" class="btn btn-primary btn-sm">Send Email</button>
 			{{/autoForm}}
 
