@@ -18,6 +18,16 @@ Meteor.publish 'adminUser', ->
 	Meteor.users.find @userId
 
 Meteor.publish 'adminCollectionsCount', ->
+	self = @
+
+	_.each AdminTables, (table, name) ->
+		id = new Mongo.ObjectID
+		count = table.collection.find().count()
+		self.added 'adminCollectionsCount', id, {collection: name, count: count}
+
+	self.ready()
+
+Meteor.publish 'adminCollectionsCountReactive', ->
 	handles = []
 	self = @
 
